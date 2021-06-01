@@ -20,4 +20,4 @@ jobs:
       - name: Load Schema of YCQL
         run: |
           docker ps;
-          docker exec -i yb /home/yugabyte/bin/ycqlsh < .github/setups/keyspace.ycql;
+          docker exec -i {{jobs.test.steps.set.id}} /home/yugabyte/bin/ycqlsh < .github/setups/keyspace.ycql;
