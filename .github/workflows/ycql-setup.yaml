@@ -7,15 +7,17 @@ jobs:
     steps:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
-      - name: Setup YugabyteDB cluster
+      - name: set
         uses: yugabyte/yugabyte-db-action@master
         with:
-          yb_image_tag: 2.2.0.0-b80
+          tag: yb
+          name: yb
           yb_master_ui_port: 7000
           yb_tserver_ui_port: 9000
           ysql_port: 5433
           ycql_port: 9042
+
       - name: Load Schema of YCQL
         run: |
           docker ps;
-          docker exec -i yb /home/yugabyte/bin/ycqlsh < .github/setups/keyspace.ycql;
+          docker exec -i  /home/yugabyte/bin/ycqlsh < .github/setups/keyspace.ycql;
