@@ -19,5 +19,5 @@ jobs:
       - name: Load Schema of YCQL
         run: |
           docker ps | grep yugabyte | awk '{print $1}'>h1.txt;
-          for i in `cat h1.txt`; do  docker exec -i $i /home/yugabyte/bin/ycqlsh < .github/setups/keyspace.ycql; done
-          for i in `cat h1.txt`; do  docker exec -it $i ycqlsh -e 'use test;select * from shop;'; done
+          for i in `cat h1.txt`; do  docker exec -i $i /home/yugabyte/bin/ycqlsh < .github/setups/keyspace.ycql; done;
+          for i in `cat h1.txt`; do  docker exec -i $i ycqlsh -e 'use test;select * from shop'; done;
