@@ -1,0 +1,17 @@
+name: Run YCQL Example
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      yugabyte:
+        image: yugabytedb/yugabyte:latest
+        ports:
+          - 2011:9042
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+      - name: Load Schema of YCQL
+        run: |
+          docker run -i ${{ job.services.yugabyte.id }} ycqlsh < .github/setups/keyspace.ycql
