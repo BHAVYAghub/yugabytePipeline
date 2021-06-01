@@ -10,8 +10,7 @@ jobs:
       - name: set
         uses: yugabyte/yugabyte-db-action@master
         with:
-          tag: yb
-          name: yb
+          args: '--name yb'
           yb_master_ui_port: 7000
           yb_tserver_ui_port: 9000
           ysql_port: 5433
