@@ -9,5 +9,6 @@ jobs:
         uses: actions/checkout@v2
       - name: Load Schema of YCQL
         run: |
-          docker run --name yb -p 2011:9042 -d yugabytedb/yugabyte:latest bin/yugabyted start --daemon=false;
+          docker run --name yb -p 2011:9042 -d yugabytedb/yugabyte bin/yugabyted start --daemon=false;
+          docker ps;
           docker exec -i yb ycqlsh < .github/setups/keyspace.ycql;
