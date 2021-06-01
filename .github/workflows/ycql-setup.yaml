@@ -11,4 +11,4 @@ jobs:
         run: |
           docker run --name yb -d -p2021:7000 -p2010:9000 -p2023:5433 -p2011:9042 yugabytedb/yugabyte:latest bin/yugabyted start --daemon=false
           docker ps;
-          docker exec -it yb /home/yugabyte/bin/ycqlsh < .github/setups/keyspace.ycql;
+          docker exec -i yb /home/yugabyte/bin/ycqlsh < .github/setups/keyspace.ycql;
